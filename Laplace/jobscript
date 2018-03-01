@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH -J helloworld
+#SBATCH -o helloworld.stdout
+#SBATCH -n 2
+#SBATCH -p compute
+#SBATCH -t 00:01:00
+
+export OMP_NUM_THREADS=16
+
+./helloworld
