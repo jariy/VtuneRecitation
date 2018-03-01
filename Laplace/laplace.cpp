@@ -54,7 +54,7 @@ int main() {
     ++iter;
     var = 0.0;
 }
-#pragma omp for  /*schedule (guided)*/ private(j,varp) /*reduction(max:var)*/ 
+#pragma omp for private(j)  
     for (i=1; i<=n; ++i) {
       for (j=1; j<=n; ++j) {
         Tnew[i*n2+j] = 0.25*( T[(i-1)*n2+j] + T[(i+1)*n2+j]
@@ -65,7 +65,7 @@ int main() {
         }
       }
     }
-#pragma omp single /*nowait*/
+#pragma omp single 
 {
     Tmp=T; T=Tnew; Tnew=Tmp;
 
